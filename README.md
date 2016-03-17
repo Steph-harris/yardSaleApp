@@ -21,6 +21,11 @@
 ### Technologies Used
 - Angular 1.5
 - Node.js
-- Express
-- MongoDB/Mongoose
+- MongoDB
 - Bootstrap (Spacelab Bootswatch)
+
+### Node Packages Used
+- Express
+- Mongoose
+- Morgan
+- Body-Parser
