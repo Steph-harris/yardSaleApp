@@ -15,4 +15,12 @@ router.get("/", function(req, res){
   res.render(process.cwd()+ "/index.html");
 });
 
+//get all items for sale in db
+
+//check db for user, either login or create
+
+//create new item
+
+//add comment to an item
+
 module.exports = router;
