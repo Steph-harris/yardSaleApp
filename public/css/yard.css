@@ -9,12 +9,12 @@
 .jumbotron .container {
   text-align: center;
   padding: 5% 0;
-  background-color: #847AAE;
+  background-color: rgba(255,255,255,.9);
   color: #5A4F84;
 }
 .container-fluid {
-  background-color: purple;
   padding: 0;
+  background-color: #847AAE;
 }
 
 hr {
