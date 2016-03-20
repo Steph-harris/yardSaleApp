@@ -2,12 +2,21 @@
   background: url("/images/garage-sale.png");
   background-size: 75%;
   background-repeat: no-repeat;
-  background-position: 50% 20%;
+  background-position: 50% 15%;
   padding: 0;
 }
 
 .jumbotron .container {
   text-align: center;
   padding: 5% 0;
-  background-color: rgba(255,255,255,.9);
+  background-color: #847AAE;
+  color: #5A4F84;
+}
+.container-fluid {
+  background-color: purple;
+  padding: 0;
+}
+
+hr {
+  border-top: 1px ridge #5A4F84;
 }

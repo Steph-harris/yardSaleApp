@@ -12,37 +12,40 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Virtual Yard Sale</h1>
-        <p>Sign in to list your stuff</p>
+        <h3>Sign in to list your stuff</h3>
       </div>
     </div>
-    <div class="col-md-4">
-      <form ng-submit="yardsale.login()">
-        <label></label>
-        <input class="form-control" type="text" ng-model="yardsale.username" placeholder="Enter Username" />
-        <input class="form-control" type="password" ng-model="yardsale.password" placeholder="Enter password" />
-        <input type="submit" class="btn btn-primary" />
-      </form>
-    </div>
-    <!-- Show div with username and money if logged in -->
-    <div class="col-md-4">
-      <h2>Username</h2>
-      <ul>
-        <li>Items this user bought</li>
-      </ul>
-      <h3>Money left:</h3>
-    </div>
+    <hr>
+    <div class="container-fluid">
+      <div class="col-md-4">
+        <form ng-submit="yardsale.login()">
+          <label></label>
+          <input class="form-control" type="text" ng-model="yardsale.username" placeholder="Enter Username" />
+          <input class="form-control" type="password" ng-model="yardsale.password" placeholder="Enter password" />
+          <input type="submit" class="btn btn-primary" />
+        </form>
+      </div>
+      <!-- Show div with username and money if logged in -->
+      <div class="col-md-4">
+        <h2>Username</h2>
+        <ul>
+          <li>Items this user bought</li>
+        </ul>
+        <h3>Money left:</h3>
+      </div>
 
-    <!-- Items for sale box w/ buy button-->
-    <div class="col-md-4">
-      <h2>For Sale</h2>
-    </div>
-    <div>Each Item
-      <h2>Price</h2>
-      <h3>Current Comments</h3>
-      <form>
-        <input type="text" placeholder="Add Comment" />
-        <input type="submit" class="btn btn-success" />
-      </form>
+      <!-- Items for sale box w/ buy button-->
+      <div class="col-md-4">
+        <h2>For Sale</h2>
+      </div>
+      <div>Each Item
+        <h2>Price</h2>
+        <h3>Current Comments</h3>
+        <form>
+          <textarea placeholder="Add Comment"></textarea>
+          <input type="submit" class="btn btn-success" />
+        </form>
+      </div>
     </div>
 
    </body>
