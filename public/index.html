@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html ng-app="yardsale">
   <head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+    <script type="text/javascript" src="scripts/controllers/app.js"></script>
+    <script type="text/javascript" src="scripts/controllers/yardsaleController.js"></script>
     <title>Yard Sale App</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/spacelab/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/yard.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
-    <script type="text/javascript" src="scripts/app.js"></script>
   </head>
-  <body>
-    <!-- Hide this if logged in -->
+  <body ng-controller="yardsaleController as yardsale">
     <div class="jumbotron">
       <div class="container">
         <h1>Virtual Yard Sale</h1>
         <h3>Sign in to list your stuff</h3>
       </div>
     </div>
-    <hr>
+    <!-- Hide this if logged in -->
     <div class="container-fluid">
-      <div class="col-md-4">
+      <div class="col-md-4" ng-hide="yardsale.loggedIn">
         <form ng-submit="yardsale.login()">
           <label></label>
           <input class="form-control" type="text" ng-model="yardsale.username" placeholder="Enter Username" />
@@ -26,8 +26,10 @@
         </form>
       </div>
       <!-- Show div with username and money if logged in -->
-      <div class="col-md-4">
+      <div class="col-md-4" ng-show="yardsale.loggedIn">
         <h2>Username</h2>
+        <!-- Allow signed in user to sign out -->
+        <a href="" ng-submit="yardsale.logout()">Sign Out</a>
         <ul>
           <li>Items this user bought</li>
         </ul>
