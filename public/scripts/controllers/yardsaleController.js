@@ -19,7 +19,11 @@ yardsale.login = function(){
   });
 }
 //allow user to sign out
-
+yardsale.logout = function(){
+  yardsale.loggedIn = false;
+  yardsale.username = '';
+  yardsale.password = '';
+}
 //show username w/ available funds and items bought
 
 //form to post an item
