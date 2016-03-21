@@ -27,7 +27,7 @@
       </div>
       <!-- Show div with username and money if logged in -->
       <div class="col-md-4" ng-show="yardsale.loggedIn">
-        <h2>Username</h2>
+        <h2>Hello, {{yardsale.username}}!</h2>
         <!-- Allow signed in user to sign out -->
         <a href="" ng-submit="yardsale.logout()">Sign Out</a>
         <ul>
