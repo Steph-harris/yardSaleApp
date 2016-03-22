@@ -65,18 +65,19 @@ router.post("/items", function(req, res){
   newItem.save(function(err, itemDoc){
     if(err){
       throw err;
-    } else {
-      //Find User and add this item id
-      User.findOneAndUpdate({
-        _id:req.body._owner
-      },{$push: {'items':itemDoc._id}}, {new:true}, function(err, itemDoc){
-        if(err){
-          res.send(err);
-        } else {
-          res.send(itemDoc)
-        }
-      });
     }
+    // else {
+    //   //Find User and add this item id
+    //   User.findOneAndUpdate({
+    //     _id:req.body._owner
+    //   },{$push: {'items':itemDoc._id}}, {new:true}, function(err, itemDoc){
+    //     if(err){
+    //       res.send(err);
+    //     } else {
+    //       res.send(itemDoc)
+    //     }
+    //   });
+    // }
   });
 });
 

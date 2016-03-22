@@ -58,7 +58,7 @@ app.controller('yardsaleController', function($http){
       method: 'GET',
       url: '/items'
     }).then(function(result){
-      console.log(result);
+      console.log(result.data);
       angular.forEach(result.data, function(singleItem){
         yardsale.itemList.push(singleItem);
       });
