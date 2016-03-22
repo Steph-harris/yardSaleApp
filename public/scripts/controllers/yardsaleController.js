@@ -45,9 +45,10 @@ app.controller('yardsaleController', function($http){
       url:'/items',
       data:Item
     }).then(function(result){
-      yardsale.itemId = result.data._id
+    yardsale.itemId = result.data._id
     yardsale.itemList.push(result.data);
     //BUG: username not added until refresh
+    //BUG: item id only added from here
     yardsale.itemName = '';
     yardsale.itemDescription = '';
     yardsale.itemPrice = '';
@@ -60,6 +61,7 @@ app.controller('yardsaleController', function($http){
       method: 'GET',
       url: '/items'
     }).then(function(result){
+      yardsale.itemId = result.data._id
       console.log(result.data);
       angular.forEach(result.data, function(singleItem){
         yardsale.itemList.push(singleItem);
@@ -79,7 +81,7 @@ app.controller('yardsaleController', function($http){
       url: '/comments',
       data: Comment
     }).then(function(result){
-      console.log(result);
+      console.log(result.data);
     });
   }
   //call get item function on page load
