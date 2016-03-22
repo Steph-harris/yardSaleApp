@@ -62,13 +62,20 @@ router.post("/login", function(req, res){
 //create new item
 router.post("/items", function(req, res){
   var newItem = new Item(req.body);
-  newItem.save(function(err, result){
+  newItem.save(function(err, itemDoc){
     if(err){
       throw err;
     } else {
       //Find User and add this item id
-      console.log(req);
-    res.send(result)
+      User.findOneAndUpdate({
+        _id:req.body._owner
+      },{$push: {'items':itemDoc._id}}, {new:true}, function(err, itemDoc){
+        if(err){
+          res.send(err);
+        } else {
+          res.send(itemDoc)
+        }
+      });
     }
   });
 });

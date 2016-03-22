@@ -16,8 +16,10 @@ app.controller('yardsaleController', function($http){
       url: "/login",
       data: User
     }).then(function(result){
+      console.log(result);
       yardsale.username = result.data.username;
       yardsale.money = result.data.money;
+      yardsale.userId = result.data._id;
     });
   }
   //allow user to sign out
@@ -31,6 +33,8 @@ app.controller('yardsaleController', function($http){
   //form to add an item
   yardsale.addItem = function (){
     var Item = {
+      // update owner when bought
+      _owner: yardsale.userId,
       name: yardsale.itemName,
       description: yardsale.itemDescription,
       price: yardsale.itemPrice,
@@ -54,6 +58,7 @@ app.controller('yardsaleController', function($http){
       method: 'GET',
       url: '/items'
     }).then(function(result){
+      console.log(result);
       angular.forEach(result.data, function(singleItem){
         yardsale.itemList.push(singleItem);
       });
