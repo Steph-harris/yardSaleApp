@@ -1,6 +1,7 @@
 app.controller('yardsaleController', function($http){
   var yardsale = this;
   yardsale.itemList = [];
+  yardsale.itemComment = [];
   //form to log in(send this info to server)
   yardsale.login = function(){
     yardsale.loggedIn = true;
@@ -14,8 +15,8 @@ app.controller('yardsaleController', function($http){
       url: "/login",
       data: User
     }).then(function(result){
-      var username = yardsale.username
-      console.log(result);
+      var username = yardsale.username;
+
       username: result.data.username;
     });
   }
@@ -30,9 +31,10 @@ app.controller('yardsaleController', function($http){
   //form to add an item
   yardsale.addItem = function (){
     var Item = {
-    name: yardsale.itemName,
-    description: yardsale.itemDescription,
-    price: yardsale.itemPrice
+      name: yardsale.itemName,
+      description: yardsale.itemDescription,
+      price: yardsale.itemPrice,
+      sold: false
     };
     $http({
       method:'POST',
@@ -46,8 +48,6 @@ app.controller('yardsaleController', function($http){
     });
   }
 
-  //form to comment on an item
-
   //get items for sale, add them to array to be looped
   yardsale.getItems = function(){
     $http({
@@ -59,8 +59,20 @@ app.controller('yardsaleController', function($http){
       });
     });
   }
-  // .then(function(result){
-  //
+
+  //form to comment on an item
+  yardsale.addComment = function(){
+    var Comment = {
+      comment: yardsale.itemComment
+    };
+    $http({
+      method: 'POST',
+      url: '/comments',
+      data: Comment
+    }).then(function(result){
+      console.log(result);
+    });
+  }
   //call get item function on page load
     yardsale.getItems();
   });
