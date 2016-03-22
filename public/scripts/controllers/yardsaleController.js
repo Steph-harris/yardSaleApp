@@ -1,6 +1,6 @@
 app.controller('yardsaleController', function($http){
   var yardsale = this;
-  yardsale.itemList = [{name:"turkey baster", description:"ok", price:6}, "lego set"];
+  yardsale.itemList = [];
   //form to log in(send this info to server)
   yardsale.login = function(){
     yardsale.loggedIn = true;
@@ -39,21 +39,28 @@ app.controller('yardsaleController', function($http){
       url:'/items',
       data:Item
     }).then(function(result){
-      yardsale.itemList.push(result.data);
-      yardsale.itemName = '';
-      yardsale.itemDescription = '';
-      yardsale.itemPrice = '';
-
-      console.log(yardsale.itemList);
+    yardsale.itemList.push(result.data);
+    yardsale.itemName = '';
+    yardsale.itemDescription = '';
+    yardsale.itemPrice = '';
     });
   }
 
   //form to comment on an item
 
   //get items for sale, add them to array to be looped
+  yardsale.getItems = function(){
+    $http({
+      method: 'GET',
+      url: '/items'
+    }).then(function(result){
+      angular.forEach(result.data, function(singleItem){
+        yardsale.itemList.push(singleItem);
+      });
+    });
+  }
   // .then(function(result){
-  //     angular.forEach(result.data, function(singleItem){
-  //       yardsale.itemList.push(singleItem);
-  //     });
+  //
   //call get item function on page load
+    yardsale.getItems();
   });

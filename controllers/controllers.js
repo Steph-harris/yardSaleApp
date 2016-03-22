@@ -23,7 +23,16 @@ router.get("/", function(req, res){
 });
 
 //get all items for sale in db
-
+router.get("/items", function(req,res){
+  Item.find(function(err, docs){
+    if(err){
+      console.log(err);
+      res.send(err);
+    } else {
+      res.send(docs);
+    }
+  });
+});
 //check db for user, either login or create
 router.post("/login", function(req, res){
   req.body.username = req.body.username.toLowerCase().trim();
