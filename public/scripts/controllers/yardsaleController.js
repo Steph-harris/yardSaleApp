@@ -28,7 +28,7 @@ app.controller('yardsaleController', function($http){
     yardsale.username = '';
     yardsale.password = '';
   }
-  //show username w/ available funds and items bought
+  //show user available funds and items bought
 
   //form to add an item
   yardsale.addItem = function (){
@@ -45,7 +45,9 @@ app.controller('yardsaleController', function($http){
       url:'/items',
       data:Item
     }).then(function(result){
+      yardsale.itemId = result.data._id
     yardsale.itemList.push(result.data);
+    //BUG: username not added until refresh
     yardsale.itemName = '';
     yardsale.itemDescription = '';
     yardsale.itemPrice = '';
@@ -68,6 +70,8 @@ app.controller('yardsaleController', function($http){
   //form to comment on an item
   yardsale.addComment = function(){
     var Comment = {
+      _owner: yardsale.userId,
+      _item: yardsale.itemId,
       comment: yardsale.itemComment
     };
     $http({

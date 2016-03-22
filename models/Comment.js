@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 CommentSchema = new Schema ({
   _owner: {type: Schema.Types.ObjectId, ref: 'User'},
-  //link to item
+  _item: {type: Schema.Types.ObjectId, ref: 'Item'},
   comment: String
 });
 
