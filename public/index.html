@@ -36,19 +36,34 @@
         <h3>Money left:</h3>
       </div>
 
+      <!-- Put Item up for Sale -->
+      <div class="col-md-6" ng-show="yardsale.loggedIn">
+        <form ng-submit="yardsale.addItem()">
+          <input class="form-control" type="text" ng-model="yardsale.itemName" placeholder="Item Name"/>
+          <input class="form-control" type="text" ng-model="yardsale.itemDescription" placeholder="Item Description"/>
+          <input class="form-control" type="number" ng-model="yardsale.itemPrice" placeholder="Item Price"/>
+          <input type="submit" class="btn btn-primary" />
+        </form>
+      </div>
+
       <!-- Items for sale box w/ buy button-->
       <div class="col-md-4">
         <h2>For Sale</h2>
+        <div class="thumbnail" ng-repeat="item in yardsale.itemList">
+          <div class="caption">
+            <h3>{{item.name}} <span>${{item.price}}</span></h3>
+            <p>{{item.description}}</p>
+            <p ng-hide="yardsale.loggedIn"><a href="#" class="btn btn-info disabled" role="button">Sign In to Buy</a> </p>
+            <p ng-show="yardsale.loggedIn"><a href="#" class="btn btn-info" role="button">Buy</a> </p>
+          </div>
+        </div>
       </div>
       <div>Each Item
-        <h2>Price</h2>
-        <h3>Current Comments</h3>
         <form>
           <textarea placeholder="Add Comment"></textarea>
           <input type="submit" class="btn btn-success" />
         </form>
       </div>
     </div>
-
    </body>
 </html>

@@ -14,7 +14,7 @@ router.use(bodyParser.json());
 
 //DB Models to use
 var User = require("../models/User.js");
-// var Item = require("../models/Item.js");
+var Item = require("../models/Item.js");
 // var Comment = require("../models/Comment.js");
 
 //ROUTES
@@ -49,6 +49,17 @@ router.post("/login", function(req, res){
 });
 
 //create new item
+router.post("/items", function(req, res){
+  console.log(req.body);
+  var newItem = new Item(req.body);
+  newItem.save(function(err, result){
+    if(err){
+      throw err;
+    } else {
+    res.send(result)
+    }
+  });
+});
 
 //add comment to an item
 
