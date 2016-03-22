@@ -28,12 +28,13 @@
       <!-- Show div with username and money if logged in -->
       <div class="col-md-4" ng-show="yardsale.loggedIn">
         <h2>Hello, {{yardsale.username}}!</h2>
+        <h4>Funds: {{ yardsale.money | currency }}</h4>
         <!-- Allow signed in user to sign out -->
         <a href="" ng-click="yardsale.logout()">Sign Out</a>
+        <h3>Items You've Bought</h3>
         <ul>
           <li>Items this user bought</li>
         </ul>
-        <h3>Money left:</h3>
       </div>
 
       <!-- Items for sale box w/ buy button-->

@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema ({
   username: String,
   password: String,
+  money: Number,
   items: [{type: Schema.Types.ObjectId, ref: 'Item'}],
   comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
 });

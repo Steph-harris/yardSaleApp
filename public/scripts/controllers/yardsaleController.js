@@ -8,16 +8,16 @@ app.controller('yardsaleController', function($http){
     //post User details
     var User = {
       username: yardsale.username,
-      password: yardsale.password
+      password: yardsale.password,
+      money: 1000
     };
     $http({
       method: 'POST',
       url: "/login",
       data: User
     }).then(function(result){
-      var username = yardsale.username;
-
-      username: result.data.username;
+      yardsale.username = result.data.username;
+      yardsale.money = result.data.money;
     });
   }
   //allow user to sign out
