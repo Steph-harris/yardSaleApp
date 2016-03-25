@@ -16,7 +16,8 @@ app.controller('yardsaleController', function($http){
       url: "/login",
       data: User
     }).then(function(result){
-      console.log(result);
+      console.log("Response from logging in ");
+      console.log(result.data);
       yardsale.username = result.data.username;
       yardsale.money = result.data.money;
       yardsale.userId = result.data._id;
@@ -29,6 +30,8 @@ app.controller('yardsaleController', function($http){
     yardsale.password = '';
   }
   //show user available funds and items bought
+  //Allow user to buy an item, add its objID to collItems
+  yardsale.buyItem = function()
 
   //form to add an item
   yardsale.addItem = function (){
@@ -44,9 +47,9 @@ app.controller('yardsaleController', function($http){
       method:'POST',
       url:'/items',
       data:Item
-    }).then(function(result){
-    yardsale.itemId = result.data._id
-    yardsale.itemList.push(result.data);
+    }).then(function(item){
+    yardsale.itemId = item.data._id
+    yardsale.itemList.push(item.data);
     //BUG: username not added until refresh
     //BUG: item id only added from here
     yardsale.itemName = '';
@@ -60,17 +63,19 @@ app.controller('yardsaleController', function($http){
     $http({
       method: 'GET',
       url: '/items'
-    }).then(function(result){
-      yardsale.itemId = result.data._id
-      console.log(result.data);
-      angular.forEach(result.data, function(singleItem){
+    }).then(function(item){
+      yardsale.itemId = item.data._id
+      console.log("Get request for items on page load ");
+      console.log(item.data);
+      angular.forEach(item.data, function(singleItem){
         yardsale.itemList.push(singleItem);
       });
     });
   }
 
   //form to comment on an item
-  yardsale.addComment = function(){
+  yardsale.addComment = function(idx){
+    console.log(idx);
     var Comment = {
       _owner: yardsale.userId,
       _item: yardsale.itemId,

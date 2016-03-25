@@ -48,7 +48,7 @@ router.post("/login", function(req, res){
       if (result === null) {
         var newUser = new User(req.body);
         newUser.save(function(err, newUser){
-          console.log("User created: " + newUser);
+          console.log("User created: ", newUser);
           res.send(newUser);
         });
       } else {
@@ -66,6 +66,16 @@ router.post("/items", function(req, res){
     if(err){
       throw err;
     }
+    //need to populate owner info after save
+    // Item.populate('_owner')
+    // .exec(function(err, docs){
+    //   if(err){
+    //     console.log(err);
+    //     res.send(err);
+    //   } else {
+    //     res.send(docs);
+    //   }
+    // });
     // else {
     //   //Find User and add this item id
     //   User.findOneAndUpdate({
@@ -74,9 +84,10 @@ router.post("/items", function(req, res){
     //     if(err){
     //       res.send(err);
     //     }
-            else {
-          res.send(itemDoc)
-        }
+        //     else {
+        //   console.log("Data returned from db " + itemDoc);
+        //   res.send(itemDoc);
+        // }
     //   });
     // }
   });

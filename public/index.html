@@ -43,7 +43,7 @@
         <div class="thumbnail" ng-repeat="item in yardsale.itemList">
           <div class="caption">
             <h3>{{item.name}} <span>${{item.price}}</span></h3>
-            <h5>Posted by {{item._owner[0].username}}</h5>
+            <h5>Posted by {{item._owner.username}}</h5>
             <p>{{item.description}}</p>
             <p ng-hide="yardsale.loggedIn"><a href="#" class="btn btn-info disabled" role="button">Sign In to Buy</a> </p>
             <p ng-show="yardsale.loggedIn"><a href="#" class="btn btn-info" role="button">Buy</a> </p>

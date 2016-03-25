@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var ItemSchema = new Schema ({
-  _owner: [{type: Schema.Types.ObjectId, ref: 'User'}],
+  _owner: {type: Schema.Types.ObjectId, ref: 'User'},
   name:String,
   description: String,
   price: Number,
